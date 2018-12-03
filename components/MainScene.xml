@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
+
+<component name="MainScene" extends="Scene" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<!-- importing main handler -->
+    <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
+    
+    <interface>
+    	<field type="string" id="logoutValue" onChange="onLogoutUser" alwaysNotify="true" />
+    </interface>
+    
+    <children>
+    
+    	<LayoutGroup id="userInput" vertAlignment="center" horizAlignment="center" translation="[960,540]">
+    		<LayoutGroup id="userNameLayout" horizAlignment="left" layoutDirection="horiz" itemSpacings="[100]" >
+    			<Label id="userNameLabel" text="Name : " horizAlign="left" vertAlign="center" color= "0x000000ff" height = "150" />
+    			<Button id="userNameBtn" text="userName" iconUri="" focusedIconUri="" textColor= "0xFFFF00" height = "150" focusedTextColor = "0xff0000" />
+    		</LayoutGroup>
+    	
+    		<LayoutGroup id="userPasswordLayout" horizAlignment="left" layoutDirection="horiz" itemSpacings="[100]" >
+    			<Label id="userPasswordLabel" text="Password : " horizAlign="left" vertAlign="center" color= "0x000000ff" height = "150" />
+    			<Button id="userPasswordBtn" text="userPassword" iconUri="" focusedIconUri="" textColor= "0xFFFF00" height = "150" focusedTextColor = "0xff0000" />
+    		</LayoutGroup>
+    	
+    		<LayoutGroup id="userLoginLayout" horizAlignment="center" layoutDirection="horiz" >
+    			<Button id="loginBtn" text="Login" iconUri="" focusedIconUri="" textColor= "0xFFFF00" height = "150" focusedTextColor = "0xff0000" />
+    		</LayoutGroup>
+    		
+    		<Keyboard id="userKeyboard" text="" focusedKeyColor="0xffffffff" />	
+    	</LayoutGroup>
+    	
+    </children>
+    
+</component>

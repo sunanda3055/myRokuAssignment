@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="RowlistComponent" extends="Group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+	<script type="text/brightscript" uri="pkg:/components/RowlistComponent.brs" />
+	
+	<interface>
+		<field id="itemContent" type="node" onChange="onItemContentChanged" />
+	</interface>
+	
+	<children>
+  		
+  		<Label 
+        id="label1" 
+        horizAlign="center" 
+        translation="[0,0]" 
+        width="300" 
+        height="300"
+        vertAlign="center"
+        wrap = "true"
+        maxLines="3" 
+        />
+        
+	</children>
+	
+</component>

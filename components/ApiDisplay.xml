@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
+
+<component name="ApiDisplay" extends="Group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<!-- importing main handler -->
+    <script type="text/brightscript" uri="pkg:/components/ApiDisplay.brs" />
+    
+    <interface>
+    <field type="node" id="prevScreen" />
+    <field type="string" id="startApiLoading" onChange = "onStartApiLoading" />
+    <field id = "setFocusOnButton" type="string" onChange = "onSetFocusOnButton" />
+    </interface>
+    
+    <children>
+    
+    	<Rectangle id="bgRectangle" color="0x000000FF" width="1920" height="1080" translation="[0,0]" />
+    	<Label id="loggedUserName" text="Logged User Name" horizAlign="center" color= "0xFFFF00ff" height = "150" translation = "[660,10]" />
+    	<Button id="apiHitBtn" text="Show Data" iconUri="" focusedIconUri="" translation = "[260,200]" textColor= "0xFFFF00" height = "150" focusedTextColor = "0xff0000" />
+    	<Button id="logoutBtn" text="Logout" iconUri="" focusedIconUri="" translation = "[660,200]" textColor= "0xFFFF00" height = "150" focusedTextColor = "0xff0000" />
+    	<RowList id="listData" translation="[10,600]"></RowList>
+    	<Video id="musicVideo" visible="false"	width="1920" height="1080" translation="[0,0]" />
+    
+    </children>
+    
+</component>
