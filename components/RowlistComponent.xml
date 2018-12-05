@@ -8,6 +8,14 @@
 	</interface>
 	
 	<children>
+	
+		<Rectangle
+		id = "labelBg"
+		translation = "[0,0]"
+		width="300"
+		height="300"
+		color="0x717D7EFF"
+		/>
   		
   		<Label 
         id="label1" 

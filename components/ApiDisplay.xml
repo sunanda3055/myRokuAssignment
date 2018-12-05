@@ -15,12 +15,27 @@
     <children>
     
     	<Rectangle id="bgRectangle" color="0x000000FF" width="1920" height="1080" translation="[0,0]" />
-    	<Label id="loggedUserName" text="Logged User Name" horizAlign="center" color= "0xFFFF00ff" height = "150" translation = "[660,10]" />
-    	<Button id="apiHitBtn" text="Show Data" iconUri="" focusedIconUri="" translation = "[260,200]" textColor= "0xFFFF00" height = "150" focusedTextColor = "0xff0000" />
-    	<Button id="logoutBtn" text="Logout" iconUri="" focusedIconUri="" translation = "[660,200]" textColor= "0xFFFF00" height = "150" focusedTextColor = "0xff0000" />
+    	
+    	<LayoutGroup id="displayContainer" translation="[960,10]" layoutDirection="vert" horizAlignment="center" >
+    		<LayoutGroup horizAlignment="center" layoutDirection="horiz" itemSpacings="[100]" >
+    			<Label text="User : " font = "font:LargeSystemFont" />
+    			<Label id="loggedUserName" text="Logged User Name" font = "font:LargeSystemFont" horizAlign="center" color= "0xFFFF00ff" height = "100" translation="[960,0]"/>
+    		</LayoutGroup>
+    		
+    		<LayoutGroup horizAlignment="center" layoutDirection="vert" translation="[760,0]">
+    			<Button id="apiHitBtn" text="Show Data" iconUri="" focusedIconUri="" textColor= "0xFFFF00" height = "150" focusedTextColor = "0xff0000" />
+    			<Group>
+    			<Button id="logoutBtn" text="" iconUri="" focusedIconUri="" textColor= "0xFFFF00" minWidth="250" maxWidth="250" height = "150" focusedTextColor = "0xff0000" />
+    			<Label id="logoutBtnLabel" text="Logout" horizAlign="center" vertAlign="center" color="0xFFFF00" width="250" height="150" />
+    			</Group>
+    		</LayoutGroup>	
+    				
+    	</LayoutGroup>
+    	
+    	<Label id="rhymeTitleSelected" text="Rhyme 1" color= "0xFFFF00ff" width="500" height="150" horizAlign="center" translation="[710,500]" />
     	<RowList id="listData" translation="[10,600]"></RowList>
     	<Video id="musicVideo" visible="false"	width="1920" height="1080" translation="[0,0]" />
-    
+    	    
     </children>
     
 </component>

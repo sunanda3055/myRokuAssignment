@@ -14,18 +14,26 @@
     
     	<LayoutGroup id="userInput" vertAlignment="center" horizAlignment="center" translation="[960,540]">
     		<LayoutGroup id="userNameLayout" horizAlignment="left" layoutDirection="horiz" itemSpacings="[100]" >
-    			<Label id="userNameLabel" text="Name : " horizAlign="left" vertAlign="center" color= "0x000000ff" height = "150" />
-    			<Button id="userNameBtn" text="userName" iconUri="" focusedIconUri="" textColor= "0xFFFF00" height = "150" focusedTextColor = "0xff0000" />
+    			<Label id="userNameLabel" text="Email : " horizAlign="left" vertAlign="center" color= "0x000000ff" height = "150" />
+    			<Group>
+    				<Button id="userNameBtn" text="" iconUri="" focusedIconUri="" textColor= "0xFFFF00" minWidth="500" height = "150" focusedTextColor = "0xff0000" />
+    				<Label id="userNameBtnLabel" text="user Email" horizAlign="center" vertAlign="center" color="0xFFFF00" width="500" height="150" />
+    			</Group>
+    			
     		</LayoutGroup>
     	
     		<LayoutGroup id="userPasswordLayout" horizAlignment="left" layoutDirection="horiz" itemSpacings="[100]" >
     			<Label id="userPasswordLabel" text="Password : " horizAlign="left" vertAlign="center" color= "0x000000ff" height = "150" />
-    			<Button id="userPasswordBtn" text="userPassword" iconUri="" focusedIconUri="" textColor= "0xFFFF00" height = "150" focusedTextColor = "0xff0000" />
+    			<Group>
+    				<Button id="userPasswordBtn" text="" iconUri="" focusedIconUri="" textColor= "0xFFFF00" minWidth="500" height = "150" focusedTextColor = "0xff0000" />
+    				<Label id="userPasswordBtnLabel" text="user Password" horizAlign="center" vertAlign="center" color="0xFFFF00" width="500" height="150" />
+    			</Group>    			
     		</LayoutGroup>
     	
-    		<LayoutGroup id="userLoginLayout" horizAlignment="center" layoutDirection="horiz" >
-    			<Button id="loginBtn" text="Login" iconUri="" focusedIconUri="" textColor= "0xFFFF00" height = "150" focusedTextColor = "0xff0000" />
-    		</LayoutGroup>
+    		<Group id="userLoginLayout" translation="[860,0]" >
+    			<Button id="loginBtn" text="" iconUri="" focusedIconUri="" textColor= "0xFFFF00" minWidth="200" maxWidth="200" height = "150" focusedTextColor = "0xff0000" />
+    			<Label id="loginBtnLabel" text="Login" horizAlign="center" vertAlign="center" color= "0xFFFF00" width="200" height = "150" />
+    		</Group>
     		
     		<Keyboard id="userKeyboard" text="" focusedKeyColor="0xffffffff" />	
     	</LayoutGroup>

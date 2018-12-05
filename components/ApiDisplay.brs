@@ -2,7 +2,9 @@ sub init()
     m.top.setFocus(true)
     m.apiHitBtn = m.top.findNode("apiHitBtn")
     m.apiHitBtn.visible = false
+    m.rhymeTitleSelected = m.top.findNode("rhymeTitleSelected")
     m.logoutBtn = m.top.findNode("logoutBtn")
+    m.logoutBtnLabel = m.top.findNode("logoutBtnLabel")
     m.loggedUserName = m.top.findNode("loggedUserName")
     print "Before Fetching data"
     m.apiHitBtn.observeField("buttonSelected","onFetchingDataFromApi")
@@ -30,7 +32,8 @@ sub init()
     m.musicVideo = m.top.findNode("musicVideo")   
     m.store = CreateObject("roRegistrySection", "UserApplication")
     if m.store.Exists("UserNameRegistry") 
-        print "UserNameRegistry : ",m.store.Read("UserNameRegistry") 
+        print "UserNameRegistry : ",m.store.Read("UserNameRegistry")
+        print "UserPasswordRegistry : ",m.store.Read("UserPasswordRegistry") 
         m.loggedUserName.text = m.store.Read("UserNameRegistry")
     else 
         m.loggedUserName.text = "Empty"
@@ -39,27 +42,30 @@ sub init()
 end sub
 
 function onRowItemFocused()
-    print "rowItemFocused : ", m.apiDataList.rowItemFocused   
+    print "rowItemFocused : ", m.apiDataList.rowItemFocused  
+    m.rhymeTitleSelected.text = m.dataArr[ m.apiDataList.rowItemFocused[1]].title
 End function
 
 function onRowItemSelected()
-    print "rowItemSelected : ", m.apiDataList.rowItemSelected
-    setVideo()
+    'print "rowItemSelected : ", m.apiDataList.rowItemSelected[1]   '[0,1]
+    'print  m.dataArr[ m.apiDataList.rowItemFocused[1]]
+    title = m.dataArr[ m.apiDataList.rowItemFocused[1]].title
+    setVideo(title)
 End function
 
 function showdialog()     
       progressdialog = createObject("roSGNode", "ProgressDialog")
       'm.progressdialog.backgroundUri = "pkg:/images/rsgde_dlg_bg_hd.9.png"
       progressdialog.title = "Example Progress Dialog"
-      print "m.top.getScene().dialog---->",m.top.getScene()'.dialog
+      'print "m.top.getScene().dialog---->",m.top.getScene()'.dialog
       m.top.getScene().dialog = progressdialog         
 end function
 
-function setVideo()
+function setVideo(title as String)
     m.videoContent = createObject("roSGNode","ContentNode")
     print "videoContent---->",m.videoContent
     m.videoContent.url = "https://roku.s.cpl.delvenetworks.com/media/59021fabe3b645968e382ac726cd6c7b/60b4a471ffb74809beb2f7d5a15b3193/roku_ep_111_segment_1_final-cc_mix_033015-a7ec8a288c4bcec001c118181c668de321108861.m3u8"
-    m.videoContent.title = "Rhyme video"
+    m.videoContent.title = title
     m.videoContent.streamformat = "hls"
     m.musicVideo.observeField("state","onCheckingVideoState")
     m.musicVideo.content = m.videoContent
@@ -84,14 +90,13 @@ end function
 
 '---------- Row List &&&&& Api Hit-------
 function onFetchingDataFromApi() 
-    print "Fetching data"  
-        
+    print "Fetching data"       
 end function
 '---------- Row List &&&&& Api Hit-------
 
 function onContentReceived()
     print "hello"
-    print "m.taskCompObj.content ----> ",m.taskCompObj.content.content.count()
+    'print "m.taskCompObj.content ----> ",m.taskCompObj.content.content.count()
     m.dataArr = m.taskCompObj.content.content
     m.apiDataList.content = GetRowListContent()
     m.apiDataList.setFocus(true)  
@@ -108,10 +113,12 @@ function GetRowListContent()
    'for item = 0 to m.dataArr.count()-1
         row = parentContentNode.CreateChild("ContentNode")
         row.title = "Rhymes"
+        
         for index = 0 to m.dataArr.count()-1
-        print "row.title--->",m.dataArr[index].title
+        'print "row.title--->",m.dataArr[index].title
             rowItem = row.CreateChild("RowListComponentData")
             rowItem.labelTitle = m.dataArr[index].title
+            
         end for
    'end for  
    return parentContentNode
@@ -146,9 +153,11 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
             
         else if key = "up"
                 m.logoutBtn.setFocus(true) 
+                m.logoutBtnLabel.color = "0xff0000"
         
         else if key = "down"
-                m.apiDataList.SetFocus(true)       
+                m.apiDataList.SetFocus(true)  
+                m.logoutBtnLabel.color = "0xFFFF00"     
             
         else if key = "back"
         print "on BACK key press video is stopped"
